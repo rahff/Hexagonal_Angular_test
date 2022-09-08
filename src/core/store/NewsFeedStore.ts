@@ -10,16 +10,12 @@ export interface NewsFeedState {
 
 export class NewsFeedStore implements StoreSubject{
 
-    private effects!: Effect;
     private _subscriber: any[] = []
     private state: NewsFeedState = {
         test: "initial value"
     };
     
-    constructor(private reducer: Reducer, private repository: Repository){
-        this.effects = new Effect(this.repository);
-
-    }
+    constructor(private reducer: Reducer, private effects: Effect){}
 
     attach(observer: Observer): void {
         if(this._subscriber.includes(observer)) return;
