@@ -1,14 +1,15 @@
+import { Effects } from "../abstraction/Effects";
 import { Repository } from "../abstraction/Repository";
 import { Action } from "../actions/Action";
 
 
 
 
-export class Effect {
+export class Effect implements Effects{
 
     constructor(private repository: Repository){}
 
-    async createAction(action: Action): Promise<Action> {
+    async createEffect(action: Action): Promise<Action> {
         switch (action.getName()) {
             case "async_action_1":
                 const actionPayload = await this.repository.getNewsFeedData();

@@ -1,3 +1,4 @@
+import { Effects } from "../abstraction/Effects";
 import { Observer, StoreSubject } from "../abstraction/Observer";
 import { Repository } from "../abstraction/Repository";
 import { Action } from "../actions/Action";
@@ -15,7 +16,7 @@ export class NewsFeedStore implements StoreSubject{
         test: "initial value"
     };
     
-    constructor(private reducer: Reducer, private effects: Effect){}
+    constructor(private reducer: Reducer, private effects: Effects){}
 
     attach(observer: Observer): void {
         if(this._subscriber.includes(observer)) return;
@@ -42,7 +43,7 @@ export class NewsFeedStore implements StoreSubject{
     }
 
     async dispatchAsync(action: Action): Promise<void> {
-        const asyncAction = await this.effects.createAction(action);
+        const asyncAction = await this.effects.createEffect(action);
         this.dispatch(asyncAction);     
     }
 

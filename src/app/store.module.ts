@@ -1,4 +1,5 @@
 import { NgModule } from "@angular/core";
+import { Effects } from "src/core/abstraction/Effects";
 import { Repository } from "src/core/abstraction/Repository";
 import { Effect } from "src/core/effects/Effect";
 import { Reducer } from "../core/reducers/Reducer";
@@ -16,7 +17,7 @@ import { Repository1 } from "./repositories/Repository";
             provide: Reducer, useFactory: ()=> new Reducer(),
         },
         {
-            provide: NewsFeedStore, useFactory: (reducer: Reducer, effects: Effect)=> new NewsFeedStore(reducer, effects),
+            provide: NewsFeedStore, useFactory: (reducer: Reducer, effects: Effects)=> new NewsFeedStore(reducer, effects),
             deps: [ Reducer, Effect ]
         },
     ]
