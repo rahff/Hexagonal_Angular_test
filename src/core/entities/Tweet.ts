@@ -4,5 +4,7 @@ import { Commentary } from "./Commentary";
 export interface Tweet {
     content: string;
     tweetos: Tweetos;
-    comments: Commentary[]
+    comments: Commentary[];
+    likes: number;
+    id: string;
 }

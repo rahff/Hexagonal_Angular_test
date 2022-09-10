@@ -3,7 +3,7 @@ import { Effect } from "src/core/effects/Effect";
 import { NewsFeedEffect } from "src/core/effects/NewsFeedEffect";
 import { TweetRepository } from "src/core/ports/repositories/TweetRepository";
 import { NewsFeedStore } from "src/core/stores/NewsFeedStore";
-import { TweetRepositoryAdapter } from "src/infrastructure/adapters/TweetRepositoryAdapter";
+import { TweetRepositoryMockAdapter } from "src/infrastructure/mocks/TweetRepositoryMock";
 
 
 
@@ -11,7 +11,7 @@ import { TweetRepositoryAdapter } from "src/infrastructure/adapters/TweetReposit
     providers: [
         {
             provide: NewsFeedEffect, useFactory: (r: TweetRepository)=> new NewsFeedEffect(r),
-            deps: [TweetRepositoryAdapter]
+            deps: [TweetRepositoryMockAdapter]
         },
         {
             provide: NewsFeedStore, useFactory: (e: Effect)=> new NewsFeedStore(e),

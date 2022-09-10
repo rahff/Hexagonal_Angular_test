@@ -6,8 +6,6 @@ import { NewsFeedStoreModule } from './newsFeedStore.module';
 
 
 
-
-
 @NgModule({
   declarations: [
     AppComponent

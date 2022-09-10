@@ -4,7 +4,7 @@ import { Action } from "../ports/actions/Action";
 
 
 
-export class SetTweetAction extends Action<Tweet[]> {
+export class SetTweetListAction extends Action<Tweet[]> {
    
     constructor(tweetList: Tweet[]){
         super(setTweetListActionName, tweetList);

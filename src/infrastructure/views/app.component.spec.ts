@@ -1,9 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { provideRoutes } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { of } from 'rxjs';
 import { Tweet } from 'src/core/entities/Tweet';
-import { tweetList } from 'src/core/test/tweetList';
+import { tweetList } from 'src/core/mocks/tweetList';
 import { NewsFeedStoreModule } from 'src/modules/newsFeedStore.module';
 import { getTweetListActionName } from 'src/shared/constants/actions.names';
 import { NewsFeedDispatcher } from '../services/NewsFeedDispatcher';

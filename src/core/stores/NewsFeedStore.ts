@@ -1,6 +1,5 @@
 import { Observer } from "../../shared/interfaces/Observer";
 import { Effect } from "../effects/Effect";
-import { NewsFeedEffect } from "../effects/NewsFeedEffect";
 import { SynchronousActionNotFoundException } from "../exceptions/SynchronousActionNotFoundException";
 import { Action } from "../ports/actions/Action";
 import { Store } from "../ports/api/Store";
