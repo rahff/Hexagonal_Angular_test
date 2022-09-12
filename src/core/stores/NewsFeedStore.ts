@@ -6,7 +6,7 @@ import { Store } from "../ports/api/Store";
 import { NewsFeedReducer } from "../reducers/NewsFeedReducer";
 import { NewsFeedState } from "../states/NewsFeedState";
 
-export class NewsFeedStore implements Store{
+export class NewsFeedStore implements Store {
 
     private _observers: Observer[] = [];
     private reducer = new NewsFeedReducer();

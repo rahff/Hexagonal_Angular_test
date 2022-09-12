@@ -1,5 +1,5 @@
 import { setTweetLikeActionName } from "src/shared/constants/actions.names";
-import { Action } from "../ports/actions/Action";
+import { Action } from "../../ports/actions/Action";
 
 export class SetTweetLikeAction extends Action<SetTweetLikePayload> {
 

@@ -1,6 +1,8 @@
-import { setTweetListActionName } from "../../shared/constants/actions.names";
-import { Tweet } from "../entities/Tweet";
-import { Action } from "../ports/actions/Action";
+
+import { Tweet } from "src/core/entities/Tweet";
+import { Action } from "src/core/ports/actions/Action";
+import { setTweetListActionName } from "src/shared/constants/actions.names";
+
 
 
 

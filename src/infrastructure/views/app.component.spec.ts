@@ -3,7 +3,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { of } from 'rxjs';
 import { Tweet } from 'src/core/entities/Tweet';
 import { tweetList } from 'src/core/mocks/tweetList';
-import { NewsFeedStoreModule } from 'src/modules/newsFeedStore.module';
+import { NewsFeedStoreModule } from 'src/infrastructure/modules/newsFeedStore.module';
 import { getTweetListActionName } from 'src/shared/constants/actions.names';
 import { NewsFeedDispatcher } from '../services/NewsFeedDispatcher';
 import { NewsFeedSelector } from '../services/NewsFeedSelector';

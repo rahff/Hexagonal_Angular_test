@@ -1,8 +1,9 @@
 import { Action } from "../ports/actions/Action";
 import { NewsFeedState } from "../states/NewsFeedState";
 import { SynchronousActionNotFoundException } from "../exceptions/SynchronousActionNotFoundException";
-import { addTweetInListActionName, deleteTweetInListActionName, setTweetLikeActionName, setTweetListActionName } from "../../shared/constants/actions.names";
+import { addCommentaryInListActionName, addTweetInListActionName, deleteTweetInListActionName, modifyTweetInListActionName, setTweetLikeActionName, setTweetListActionName } from "../../shared/constants/actions.names";
 import { Tweet } from "../entities/Tweet";
+import { Commentary } from "../entities/Commentary";
 
 export class NewsFeedReducer {
 
@@ -28,9 +29,39 @@ export class NewsFeedReducer {
                     ...initialState,
                     tweetList: this.deleteTweetInList(initialState.tweetList, action.getPayload())
                 }
+            case modifyTweetInListActionName:
+                return {
+                    ...initialState,
+                    tweetList: this.modifyTweetInList(initialState.tweetList, action.getPayload())
+                }
+            case addCommentaryInListActionName:
+                const { commentary } = action.getPayload();
+                return {
+                    ...initialState,
+                    tweetList: this.addCommentaryInTweet(initialState.tweetList, commentary)
+                }
+
             default: throw new SynchronousActionNotFoundException();
             
         }
+    }
+
+    private addCommentaryInTweet(list: Tweet[], commentary: Commentary): Tweet[] {
+        return list.map((tweet: Tweet) => {
+            if(tweet.id === commentary.tweetRef){
+                tweet.comments.push(commentary);
+            }
+            return tweet;
+        })
+    }
+
+    private modifyTweetInList(list: Tweet[], updatedTweet: Tweet): Tweet[] {
+        return list.map((tweet: Tweet) => {
+            if(tweet.id === updatedTweet.id){
+                tweet = updatedTweet;
+            }
+            return tweet;
+        })
     }
 
     private deleteTweetInList(list: Tweet[], deletedId: string): Tweet[] {

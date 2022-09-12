@@ -1,10 +1,10 @@
 
-import { SetTweetListAction } from "src/core/actions/SetTweetListAction";
 import { Tweet } from "src/core/entities/Tweet";
 import { NewsFeedStore } from "src/core/stores/NewsFeedStore"
 import { tweetList } from "src/core/mocks/tweetList";
 import { EffectMock } from "../mocks/EffectMock";
 import { NewsFeedSelector } from "./NewsFeedSelector";
+import { SetTweetListAction } from "src/core/actions/synchronous/SetTweetListAction";
 
 describe('NewsFeedSelector', ()=> {
 

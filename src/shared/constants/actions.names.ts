@@ -6,3 +6,7 @@ export const addTweetActionName = "add_tweet";
 export const addTweetInListActionName = "add_tweet_in_list";
 export const deleteTweetActionName = "delete_tweet";
 export const deleteTweetInListActionName = "delete_tweet_in_list";
+export const modifyTweetContentActionName = "modify_tweet_content";
+export const modifyTweetInListActionName = "modify_tweet_in_list";
+export const addCommentaryActionName = "add_commentary";
+export const addCommentaryInListActionName = "add_commentary_in_list";
