@@ -26,10 +26,11 @@ describe('NewsFeedDispatcher', ()=>{
     }));
 
    
-    it('should get the tweet list', fakeAsync(()=> {
+    it('should get the tweet list', fakeAsync(async ()=> {
         dispatcher.dispatch(getTweetListActionName, null)
         flushMicrotasks();
-        expect(store.getState().tweetList).toEqual(tweetList);
+        const expectedResult = await repository.getList({tweetosId: "1234"});
+        expect(store.getState().tweetList).toEqual(expectedResult);
     }));
 
     it('should increment like of first tweet', fakeAsync(()=>{
@@ -45,13 +46,14 @@ describe('NewsFeedDispatcher', ()=>{
         const tweet: Tweet = {comments: [], content: "I feel good", id: "23456", likes: 0, tweetos: { username: "Thiey Henry", email: "thierryhenry@gmail.com", avatar: "http://localhost/img/thierry.png"} }
         dispatcher.dispatch(addTweetActionName, {tweet});
         flushMicrotasks();
-        expect(store.getState().tweetList).toEqual([...tweetList, tweet]);
+        expect(store.getState().tweetList[2]).toEqual(tweet);
     }))
 
-    it("should delete a tweet", fakeAsync(()=> {
+    it("should delete a tweet", fakeAsync(async ()=> {
         dispatcher.dispatch(deleteTweetActionName, {tweetId: "678901"});
         flushMicrotasks();
-        expect(store.getState().tweetList).toEqual([tweetList[0]])
+        const expectedResult = await repository.getList({tweetosId: "23456"})
+        expect(store.getState().tweetList).toEqual([expectedResult[0]])
     }));
 
     it("should modify a tweet content", fakeAsync(()=>{
